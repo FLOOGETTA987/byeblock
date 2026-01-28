@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "ByeBlock: SoundCloud Geoblocking Remover",
   "short_name": "ByeBlock",
   "author": "Jari Zwarts",
@@ -8,17 +8,27 @@
   "version": "1.0.4",
   "permissions": [
     "webRequest",
-    "webRequestBlocking",
-    "*://a-v2.sndcdn.com/*"
+    "webRequestBlocking"
   ],
   "background": {
-    "scripts": ["background.js"]
+    "service_worker": "service_worker.js"
   },
   "web_accessible_resources": [
-    "byeblock.js"
+    {
+      "resources": [
+        "byeblock.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
   ],
   "icons": {
     "512": "512.png",
     "128": "128.png"
-  }
+  },
+  "content_security_policy": {},
+  "host_permissions": [
+    "*://a-v2.sndcdn.com/*"
+  ]
 }
